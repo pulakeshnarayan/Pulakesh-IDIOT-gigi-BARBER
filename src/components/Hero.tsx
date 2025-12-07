@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Scissors } from "lucide-react";
 import heroImage from "@/assets/hero-barbershop.jpg";
 
-const Hero = () => {
+interface HeroProps {
+  onBookClick: () => void;
+}
+
+const Hero = ({ onBookClick }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -62,12 +66,12 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button variant="hero" size="xl" className="group">
+            <Button variant="hero" size="xl" className="group" onClick={onBookClick}>
               <Calendar className="w-5 h-5 transition-transform group-hover:scale-110" />
               Book Appointment
             </Button>
-            <Button variant="heroOutline" size="xl">
-              View Services
+            <Button variant="heroOutline" size="xl" asChild>
+              <a href="#services">View Services</a>
             </Button>
           </motion.div>
         </div>

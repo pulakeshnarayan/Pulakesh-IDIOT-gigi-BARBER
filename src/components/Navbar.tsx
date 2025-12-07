@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Scissors, Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const Navbar = () => {
+interface NavbarProps {
+  onBookClick: () => void;
+}
+
+const Navbar = ({ onBookClick }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
@@ -42,7 +46,7 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="hero" size="default">
+            <Button variant="hero" size="default" onClick={onBookClick}>
               Book Now
             </Button>
           </nav>
@@ -75,7 +79,7 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero" size="default" className="mt-2">
+              <Button variant="hero" size="default" className="mt-2" onClick={() => { onBookClick(); setIsOpen(false); }}>
                 Book Now
               </Button>
             </div>

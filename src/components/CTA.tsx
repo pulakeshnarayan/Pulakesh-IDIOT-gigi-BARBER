@@ -2,9 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Clock } from "lucide-react";
 
-const CTA = () => {
+interface CTAProps {
+  onBookClick: () => void;
+}
+
+const CTA = ({ onBookClick }: CTAProps) => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
       
@@ -37,7 +41,7 @@ const CTA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button variant="hero" size="xl" className="group mb-12">
+            <Button variant="hero" size="xl" className="group mb-12" onClick={onBookClick}>
               <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
               Book Now
             </Button>
